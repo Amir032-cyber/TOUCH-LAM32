@@ -21,5 +21,9 @@ Ceci est le serveur PC pour l'application Android TOUCH-LAM32. Il permet de tran
 2. **Via Wi-Fi :** Assurez-vous que le téléphone et le PC sont sur le même réseau Wi-Fi. Entrez l'adresse IP affichée sur l'écran noir du PC.
 3. **Via USB (sans latence) :** Branchez le câble USB, activez le débogage USB. Sur l'application, choisissez la connexion USB (ou tapez `127.0.0.1`).
 
+## 🔐 Autoriser une connexion
+
+À la première connexion depuis une adresse réseau, le serveur demande une confirmation dans la console. Acceptez uniquement votre téléphone; les connexions refusées sont fermées. Cette confirmation est valable jusqu'à l'arrêt du serveur.
+
 ## ❓ Besoin d'aide ?
 Rejoignez la communauté sur [WhatsApp](https://whatsapp.com/channel/0029VbDz9WHJJhzQEVnnu22I)ou contacter le +226 02688902 .
