@@ -164,10 +164,26 @@ def start_server():
     server.bind((HOST, PORT))
     server.listen(5)
 
+    approved_clients = set()
     try:
         while True:
             client, addr = server.accept()
-            # Lance un thread pour chaque client (permet plusieurs téléphones en même temps)
+            client_ip = addr[0]
+            if client_ip not in approved_clients:
+                try:
+                    approval = input(
+                        f"Autoriser le contrôle depuis {client_ip} ? "
+                        "Confirmez que c'est votre téléphone [o/N] : "
+                    ).strip().lower()
+                except EOFError:
+                    approval = ""
+                if approval not in {"o", "oui", "y", "yes"}:
+                    print(f"[REFUSÉ] Connexion rejetée : {client_ip}")
+                    client.close()
+                    continue
+                approved_clients.add(client_ip)
+
+            # Lance un thread pour chaque client approuvé.
             thread = threading.Thread(target=handle_client, args=(client, addr))
             thread.daemon = True
             thread.start()
